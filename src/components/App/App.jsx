@@ -7,7 +7,6 @@ import React, { useState, useEffect } from "react";
 function App() {
     useEffect(() => {
 		getData()
-		console.log("new ver5")
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	} , [])
 
