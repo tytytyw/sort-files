@@ -1,0 +1,8 @@
+.row:hover {
+    background-color: rgb(255, 255, 255, .3);
+    cursor: default;
+}
+
+.file-name {
+    margin-left: .3rem;
+}

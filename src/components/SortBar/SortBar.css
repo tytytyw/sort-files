@@ -1,0 +1,39 @@
+.sort,
+.sort__item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sort {
+    margin-bottom: .5rem;
+    cursor: default;
+    line-height: 150%;
+}
+
+.sort__item {
+    position: relative;
+}
+
+.sort__item.active::before {
+    position: absolute;
+    left: 50%;
+    top: 2px;
+    transform: translateX(-50%) rotate(-45deg);
+    display: block;
+    content: "";
+    width: 4px;
+    height: 4px;
+    border-left: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    -webkit-transform: translateX(-50%) rotate(-45deg);
+    -moz-transform: translateX(-50%) rotate(-45deg);
+    -ms-transform: translateX(-50%) rotate(-45deg);
+    -o-transform: translateX(-50%) rotate(-45deg);
+}
+
+.sort__item.active.reverse::before {
+    transform: translateX(-50%) rotate(135deg);
+    -webkit-transform: translateX(-50%) rotate(135deg);
+    -moz-transform: translateX(-50%) rotate(135deg);
+    -ms-transform: translateX(-50%) rotate(135deg);
+    -o-transform: translateX(-50%) rotate(135deg);
+}
