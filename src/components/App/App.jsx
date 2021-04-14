@@ -6,7 +6,7 @@ import React, { useState, useEffect } from "react";
 
 function App() {
     useEffect(() => {
-		getData() 
+		getData()
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	} , [])
 
@@ -31,10 +31,10 @@ function App() {
 			reverse = true;
 			field = field.substr(1)
 		}
-		const byField = () => {
+		const byField = () => {debugger
 			switch(field) {
 				case "ctime":
-				case "mtime": return (prev, next) => newDate(next[field]) - newDate(prev[field])
+				case "mtime":  return (prev, next) => newDate(next[field]) - newDate(prev[field])
 				case "size": return (prev, next) => next[field] - prev[field]
 				case "ext":
 				case "name":
