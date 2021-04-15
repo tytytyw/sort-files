@@ -54,7 +54,7 @@ function App() {
 				case "size": return (prev, next) => next[field] - prev[field]
 				case "ext":
 				case "name":
-				default: return (prev, next) => prev.name < next.name ?  -1 : 1;
+				default: return (prev, next) => prev[field] < next[field] ?  -1 : 1;
 				
 		}}
 		const [...newItemList] = array;
