@@ -90,23 +90,23 @@ function SortBar({ sorting, typeSort }) {
 			</Grid>
 			<Grid
 				title="дата изменения"
-				id="mtime"
+				id="mdate"
 				className="sort__item"
 				item
 				xs={4}
 				style={itemStyle}
-				onClick={(e) => classNameMod(e, "mtime")}
+				onClick={(e) => classNameMod(e, "mdate")}
 			>
 				дата изменения
 			</Grid>
 			<Grid
 				title="дата создания"
-				id="ctime"
+				id="cdate"
 				className="sort__item mobile-hidden"
 				item
 				xs={2}
 				style={itemStyle}
-				onClick={(e) => classNameMod(e, "ctime")}
+				onClick={(e) => classNameMod(e, "cdate")}
 			>
 				дата создания
 			</Grid>

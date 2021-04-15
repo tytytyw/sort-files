@@ -13,7 +13,6 @@ function File({ fileData }) {
 		textAlign: "left",
 		padding: "0 6px",
 	};
-
 	return (
 		<Grid
 			className="row"

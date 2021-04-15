@@ -6,7 +6,7 @@ import React, { useState, useEffect } from "react";
 
 function App() {
     useEffect(() => {
-		getData() 
+		getData()
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	} , [])
 
@@ -16,8 +16,24 @@ function App() {
 	const getData = () =>
 		fetch("https://fs.mh.net.ua/ajax/lsjson.php?dir=global/video&idu=1")
 			.then((response) => response.json())
-			.then((data) => {setItemList(filterFilesList(typeSort, data));})
+			.then((data) => {
+				data.forEach(item => {
+					item.mdate = stringToDate(item.mtime)
+					item.cdate = stringToDate(item.ctime)
+				})
+				setItemList(filterFilesList(typeSort, data));
+			})
 			.catch(err => console.log(err));
+
+	function stringToDate(value) {
+		const [date, time] = value.split(" ");
+		const dateArr = date.split(".");
+		const day = dateArr[0];
+		const month = dateArr[1];
+		const year = dateArr[2]
+		const fullDate = new Date(`${month}.${day}.${year} ${time}`);
+		return fullDate
+	}
 
 	function clickSortBar(field) {
 		setTypeSort(field)
@@ -33,22 +49,12 @@ function App() {
 		}
 		const byField = () => {
 			switch(field) {
-				case "ctime":
-				case "mtime": return (prev, next) => newDate(next[field]) - newDate(prev[field])
+				case "cdate":
+				case "mdate":
 				case "size": return (prev, next) => next[field] - prev[field]
 				case "ext":
 				case "name":
-				default: return (prev, next) => prev.name < next.name ?  -1 : 1;
-
-				function newDate(value) {
-					const [date, time] = value.split(" ");
-					const dateArr = date.split(".");
-					const day = dateArr[0];
-					const month = dateArr[1];
-					const year = dateArr[2]
-					const fullDate = new Date(`${month}.${day}.${year} ${time}`);
-					return fullDate
-				}
+				default: return (prev, next) => prev[field] < next[field] ?  -1 : 1;
 				
 		}}
 		const [...newItemList] = array;
