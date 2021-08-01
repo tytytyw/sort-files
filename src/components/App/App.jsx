@@ -14,7 +14,7 @@ function App() {
 	const [typeSort, setTypeSort] = useState(localStorage.getItem('sort') || "")
 
 	const getData = () =>
-		fetch("https://fs.mh.net.ua/ajax/lsjson.php?dir=global/video&idu=1")
+		fetch("../json.json")
 			.then((response) => response.json())
 			.then((data) => {
 				data.forEach(item => {
