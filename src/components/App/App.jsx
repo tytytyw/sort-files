@@ -3,6 +3,7 @@ import SortBar from "../SortBar/SortBar";
 import FilesList from "../FilesList/FilesList";
 import { Grid } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
+import {db} from '../../db'
 
 function App() {
     useEffect(() => {
@@ -12,18 +13,12 @@ function App() {
 
 	const [itemList, setItemList] = useState([]);
 	const [typeSort, setTypeSort] = useState(localStorage.getItem('sort') || "")
-
-	const getData = () =>
-		fetch("https://fs.mh.net.ua/ajax/lsjson.php?dir=global/video&idu=1")
-			.then((response) => response.json())
-			.then((data) => {
-				data.forEach(item => {
+	const getData = () => {
+				db.forEach(item => {
 					item.mdate = stringToDate(item.mtime)
 					item.cdate = stringToDate(item.ctime)
 				})
-				setItemList(filterFilesList(typeSort, data));
-			})
-			.catch(err => console.log(err));
+				setItemList(filterFilesList(typeSort, db))};
 
 	function stringToDate(value) {
 		const [date, time] = value.split(" ");
